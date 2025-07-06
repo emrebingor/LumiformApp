@@ -15,17 +15,25 @@ class Coordinator: ObservableObject {
         switch page {
         case .viewHomePage:
             ViewHomePage()
+        case .viewDetailPage(let contentItem):
+            ViewDetailPage(viewModel: ViewModelDetailPage(contentItem: contentItem))
         }
+    }
+    
+    func push(_ page: Page) {
+        path.append(page)
     }
 }
 
 enum Page: Identifiable, Hashable {
-    case viewHomePage
+    case viewHomePage, viewDetailPage(contentItem: ModelContentItem)
     
     var id: String{
         switch self {
         case .viewHomePage:
             return "viewHomePage"
+        case .viewDetailPage(let contentItem):
+            return "viewDetailPage_\(contentItem.id)"
         }
     }
 }

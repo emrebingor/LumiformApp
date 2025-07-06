@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CustomListView: View {
-    @EnvironmentObject private var coordinator: Coordinator
     let items: [ModelContentItem]
+    let onImageTapped: (ModelContentItem) -> Void
 
     var body: some View {
         List(items, children: \.items) { item in
@@ -28,6 +28,9 @@ struct CustomListView: View {
                 if let urlString = item.src,
                    let url = URL(string: urlString) {
                     CustomThumbnailView(url: url)
+                        .onTapGesture {
+                            onImageTapped(item)
+                        }
                 }
                 DescriptionTextView(text: item.title ?? "")
             }

@@ -22,7 +22,9 @@ struct ViewHomePage: View {
                         imageName: "swiftdata")
                 } else {
                     TitleTextView(text: viewModel.pageTitle)
-                    CustomListView(items: viewModel.list)
+                    CustomListView(items: viewModel.list) { item in
+                        coordinator.push(.viewDetailPage(contentItem: item))
+                    }
                 }
             }
         }
