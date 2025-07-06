@@ -12,6 +12,7 @@ struct CustomFullScreenImageView: View {
     @State private var image: UIImage?
     @State private var isLoading = true
     @StateObject private var loader = ImageLoader()
+    
     var body: some View {
         ZStack {
             if let image = loader.image {

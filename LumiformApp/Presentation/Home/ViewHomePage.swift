@@ -10,23 +10,10 @@ import SwiftUI
 struct ViewHomePage: View {
     @EnvironmentObject private var coordinator: Coordinator
     @StateObject private var viewModel = ViewModelHomePage()
+    
     var body: some View {
         VStack {
-            if viewModel.isLoading{
-                ProgressView()
-            } else {
-                if viewModel.list.count == 0 {
-                    CustomUnavailableView(
-                        title: "No data available",
-                        description: "There is no data to display at the moment.",
-                        imageName: "swiftdata")
-                } else {
-                    TitleTextView(text: viewModel.pageTitle)
-                    CustomListView(items: viewModel.list) { item in
-                        coordinator.push(.viewDetailPage(contentItem: item))
-                    }
-                }
-            }
+            contentView
         }
         .onAppear {
             Task {
@@ -46,4 +33,24 @@ struct ViewHomePage: View {
             DescriptionTextView(text: viewModel.errorMessage)
         }
     }
+    
+    @ViewBuilder
+    private var contentView: some View {
+        if viewModel.isLoading {
+            ProgressView()
+        } else if viewModel.list.isEmpty {
+            CustomUnavailableView(
+                title: "No data available",
+                description: "There is no data to display at the moment.",
+                imageName: "swiftdata"
+            )
+        } else {
+            TitleTextView(text: viewModel.pageTitle)
+            CustomListView(items: viewModel.list) { item in
+                coordinator.push(.viewDetailPage(contentItem: item))
+            }
+        }
+    }
 }
+
+

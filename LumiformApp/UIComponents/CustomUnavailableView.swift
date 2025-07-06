@@ -19,12 +19,8 @@ struct CustomUnavailableView: View {
                 .scaledToFit()
                 .frame(width: 80, height: 80)
                 .foregroundColor(.gray)
-            Text(title)
-                .font(.title)
-                .bold()
-            Text(description)
-                .font(.body)
-                .foregroundColor(.secondary)
+            TitleTextView(text: title)
+            DescriptionTextView(text: description)
             
         }
         .multilineTextAlignment(.center)

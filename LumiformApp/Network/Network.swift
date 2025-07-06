@@ -8,9 +8,11 @@
 import Foundation
 
 struct Network {
+    
     func execute<T: Decodable>(endpoint: Endpoint<T>) async throws -> T {
-        
-        guard let request = endpoint.getUrlRequest() else { throw NetworkError.URLError }
+        guard let request = endpoint.getUrlRequest() else {
+            throw NetworkError.URLError
+        }
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
@@ -49,8 +51,7 @@ struct Network {
     
     private func decodeData<T: Decodable>(_ data: Data, as type: T.Type) throws -> T {
         do {
-            let decodedData = try JSONDecoder().decode(T.self, from: data)
-            return decodedData
+            return try JSONDecoder().decode(T.self, from: data)
         } catch {
             print("Decoding error: \(error)")
             throw NetworkError.decodingFailed

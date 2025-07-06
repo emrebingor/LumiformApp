@@ -20,6 +20,7 @@ struct CustomListView: View {
     @ViewBuilder
     private func ContentRowView(for item: ModelContentItem) -> some View {
         switch item.type {
+            
         case .text:
             DescriptionTextView(text: item.title ?? "")
 
@@ -41,6 +42,7 @@ struct CustomListView: View {
             } icon: {
                 Image(systemName: item.type == .page ? "doc.text" : "folder")
             }
+            
         }
     }
 }
