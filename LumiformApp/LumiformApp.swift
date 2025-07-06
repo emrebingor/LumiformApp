@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct LumiformAppApp: App {
+struct LumiformApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
