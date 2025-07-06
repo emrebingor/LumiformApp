@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "A_digital_vector_graphic_features_a_bright_orange_.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -12,6 +13,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "A_vector-based_digital_illustration_features_the_S.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -23,6 +25,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "A_vector_graphic_features_the_black_Swift_programm.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
